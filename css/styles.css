@@ -1,0 +1,236 @@
+/* appling google font over the website  */
+body{
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 400;
+}
+/* styling menu icon */
+.nav-menu{
+    border: none;
+    background-color: #fff;
+    font-size: 1.5rem;
+    color: #fca61f;
+}
+/* styling navbar links  */
+.navbar-nav a{
+    color: black;
+    position: relative;
+}
+.navbar-nav a:hover{
+    color: #fca61f;
+}
+.navbar-nav a:after {    
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    top: 35px;
+    position: absolute;
+    background: #fca61f;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+  }
+.navbar-nav a:hover:after { 
+    width: 100%; 
+    left: 0; 
+  }
+  /* styling contact btn  */
+.c-btn{
+    border: none;
+    background: #fca61f;
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+section {
+    scroll-margin-top: 30px; 
+}
+/* styling home section */
+.home {
+    background: linear-gradient(33deg, rgba(242,242,255,1) 0%, rgba(235,249,255,1) 100%);
+    min-height: 90vh;
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+.home h2 {
+    font-size: 3rem;
+    line-height: 1.3;
+    margin-bottom: 1.5rem;
+    color: #3f396d;
+}
+
+.home p {
+    width: 100%;
+    max-width: 600px;
+    margin: 1.5rem 0;
+    font-size: 1.2rem;
+    color: #666;
+}
+
+/* styling buttons and links in home section */
+.h-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border: none;
+    background: #fca61f;
+    color: #fff;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.h-btn:hover {
+    background: #6f34fe;
+    color: #fff;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(111, 52, 254, 0.2);
+}
+
+/* styling home section image */
+.home img {
+    max-width: 100%;
+    height: auto;
+    animation: floating 4s ease-in-out infinite;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+}
+
+@keyframes floating {
+    0%{
+        transform: translateX(0);
+    }
+    50%{
+        transform: translateX(-24px);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+
+/* expertise section starts */
+.heading small{
+    color: #6f34fe;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.heading h3{
+    margin-top: 0.5rem;
+    color: #3f396d;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+.expertise h4{
+    color: #3f396d;
+    font-weight: 700;
+}
+.expertise a{
+    text-decoration: none;
+    color: #fca61f;
+}
+.expertise a:hover{
+    color: #6f34fe;
+}
+.expertise .service-card{
+    text-align: center;
+    padding: 15px 15px;
+    border-radius: 0.7rem;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+.skill-icon {
+    width: 100%;
+    max-width: 80px;
+    height: auto;
+    margin: auto;
+    transition: transform 0.3s ease;
+}
+
+.skill-icon:hover {
+    transform: scale(1.1);
+}
+
+.skills {
+    min-height: 100vh;
+    padding: 2rem 0;
+}
+
+/* Contact Section Styles */
+.contact-info,
+.contact-form {
+    transition: all 0.3s ease;
+}
+
+.contact-info:hover,
+.contact-form:hover {
+    transform: translateY(-5px);
+}
+
+.social-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border: 1px solid #dee2e6;
+    border-radius: 25px;
+    text-decoration: none;
+    color: #6c757d;
+    transition: all 0.3s ease;
+}
+
+.social-btn:hover {
+    background-color: #3f396d;
+    color: white;
+    border-color: #3f396d;
+    transform: translateY(-2px);
+}
+
+.form-control {
+    border: 1px solid #dee2e6;
+    padding: 0.75rem;
+}
+
+.form-control:focus {
+    border-color: #3f396d;
+    box-shadow: 0 0 0 0.25rem rgba(63, 57, 109, 0.25);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .social-links {
+        justify-content: center;
+    }
+    
+    .contact-info,
+    .contact-form {
+        margin-bottom: 2rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+        gap: 1rem;
+    }
+    
+    .skill-icon {
+        max-width: 60px;
+    }
+}
+
+@media (max-width: 576px) {
+    .social-btn {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+    
+    .contact h3 {
+        font-size: 1.5rem;
+    }
+}
