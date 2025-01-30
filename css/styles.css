@@ -186,6 +186,74 @@ a {
 }
 
 /* Contact Section Styles */
+.contact {
+    background: linear-gradient(33deg, var(--dark) 0%, #0f172a 100%);
+    color: var(--white);
+}
+
+.contact .section-title,
+.contact .contact-heading {
+    color: var(--white);
+}
+
+.contact .contact-label {
+    color: var(--light-gray);
+}
+
+.contact .contact-text,
+.contact .contact-link {
+    color: var(--white);
+}
+
+.contact .contact-link:hover {
+    color: var(--primary);
+}
+
+.contact .contact-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.contact .social-links .social-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    margin-right: 10px;
+    transition: background 0.3s ease;
+}
+
+.contact .social-links .social-btn:hover {
+    background: var(--primary);
+    color: var(--white);
+}
+
+.contact .contact-form .form-control {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: var(--white);
+}
+
+.contact .contact-form .form-control:focus {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--white);
+    box-shadow: 0 0 0 0.25rem rgba(37, 99, 235, 0.25);
+}
+
+.contact .contact-form .form-floating > label {
+    color: var(--light-gray);
+}
+
+.contact .submit-btn {
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    transition: background 0.3s ease;
+}
+
+.contact .submit-btn:hover {
+    background: var(--secondary);
+}
+
 .contact-info,
 .contact-form {
     transition: all 0.3s ease;
