@@ -26,6 +26,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 
 <body>
@@ -69,7 +70,7 @@
     <!-- navbar ends here -->
 
     <!-- home section starts  -->
-    <section class="home pt-4 pt-md-5 pb-5" id="home">
+    <section class="home pt-4 pt-md-5 pb-5" id="home" data-aos="fade-down">
         <div class="container">
             <div class="row justify-content-evenly align-items-center gy-4">
                 <div class="col-11 col-sm-10 col-md-6 text-center text-md-start animate__animated animate__fadeInLeft">
@@ -98,7 +99,7 @@
     <!-- home section ends here -->
 
     <!-- skills section starts -->
-    <section class="skills min-vh-100 py-5 d-flex align-items-center" id="skills">
+    <section class="skills min-vh-100 py-5 d-flex align-items-center" id="skills" data-aos="fade-right">
         <div class="container">
             <div class="row justify-content-center gy-4">
                 <div class="col-12 text-center mb-3 mb-md-5">
@@ -131,6 +132,7 @@
                         <!-- Backend -->
                         <img src="assets/PHP-logo.svg.png" alt="PHP" class="skill-icon" title="PHP">
                         <img src="assets/pngimg.com - mysql_PNG9.png" alt="MySQL" class="skill-icon" title="MySQL">
+                        <img src="assets/laravel.png" alt="Laravel" class="skill-icon" title="Laravel">
                         <!-- Tools -->
                         <img src="assets/git.png" alt="Git" class="skill-icon" title="Git">
                     </div>
@@ -141,7 +143,7 @@
     <!-- skills section ends -->
 
     <!-- certificates section starts -->
-    <section class="certificates min-vh-100 py-5" id="certificates">
+    <section class="certificates min-vh-100 py-5" id="certificates" data-aos="fade-left">
         <div class="container">
             <div class="row justify-content-center gy-4">
                 <div class="col-12 text-center mb-3 mb-md-5">
@@ -242,7 +244,7 @@
     <!-- certificates section ends -->
 
     <!-- portfolio section starts -->
-    <section class="portfolio min-vh-100 py-5" id="portfolio">
+    <section class="portfolio min-vh-100 py-5" id="portfolio" data-aos="fade-up">
         <div class="container">
             <div class="row justify-content-center gy-4">
                 <div class="col-12 text-center mb-3 mb-md-5">
@@ -250,8 +252,8 @@
                 </div>
 
                 <!-- Portfolio Items -->
-                <div class="col-11 col-sm-6 col-lg-4 animate__animated animate__fadeInUp">
-                    <div class="portfolio-item card border-0 shadow-sm h-100">
+                <div class="col-11 col-sm-6 col-lg-4 portfolio-item animate__animated animate__fadeInUp" data-aos="fade-up">
+                    <div class="card border-0 shadow-sm h-100">
                         <img src="assets/project1.jpg" class="card-img-top" alt="Project 1"
                             style="height: 200px; object-fit: cover;">
                         <div class="card-body d-flex flex-column">
@@ -279,8 +281,8 @@
                     </div>
                 </div>
 
-                <div class="col-11 col-sm-6 col-lg-4 animate__animated animate__fadeInUp">
-                    <div class="portfolio-item card border-0 shadow-sm h-100">
+                <div class="col-11 col-sm-6 col-lg-4 portfolio-item animate__animated animate__fadeInUp" data-aos="fade-up">
+                    <div class="card border-0 shadow-sm h-100">
                         <img src="assets/project2.jpg" class="card-img-top" alt="Project 2"
                             style="height: 200px; object-fit: cover;">
                         <div class="card-body d-flex flex-column">
@@ -302,8 +304,8 @@
                     </div>
                 </div>
 
-                <div class="col-11 col-sm-6 col-lg-4 animate__animated animate__fadeInUp">
-                    <div class="portfolio-item card border-0 shadow-sm h-100">
+                <div class="col-11 col-sm-6 col-lg-4 portfolio-item animate__animated animate__fadeInUp" data-aos="fade-up">
+                    <div class="card border-0 shadow-sm h-100">
                         <img src="assets/project3.png" class="card-img-top" alt="Project 3"
                             style="height: 200px; object-fit: cover;">
                         <div class="card-body d-flex flex-column">
@@ -323,9 +325,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-11 col-sm-6 col-lg-4 animate__animated animate__fadeInUp">
+                <div class="col-11 col-sm-6 col-lg-4 portfolio-item animate__animated animate__fadeInUp" data-aos="fade-up">
 
-                    <div class="portfolio-item card border-0 shadow-sm h-100">
+                    <div class="card border-0 shadow-sm h-100">
                         <img src="assets/desktop-design-form.jpg" class="card-img-top" alt="Conference Ticket Generator"
                         style="height: 200px; object-fit: cover;">
                     <div class="card-body d-flex flex-column">
@@ -340,8 +342,8 @@
                 </div>
             </div>
                 
-                <div class="col-11 col-sm-6 col-lg-4 animate__animated animate__fadeInUp">
-                    <div class="portfolio-item card border-0 shadow-sm h-100">
+                <div class="col-11 col-sm-6 col-lg-4 portfolio-item animate__animated animate__fadeInUp" data-aos="fade-up">
+                    <div class="card border-0 shadow-sm h-100">
                         <img src="assets/project4.png" class="card-img-top" alt="Project 4"
                             style="height: 200px; object-fit: cover;">
                         <div class="card-body d-flex flex-column">
@@ -362,8 +364,8 @@ https://advice-generator-chi-gules.vercel.app/
                         </div>
                     </div>
                 </div>
-                <div class="col-11 col-sm-6 col-lg-4 animate__animated animate__fadeInUp">
-                    <div class="portfolio-item card border-0 shadow-sm h-100">
+                <div class="col-11 col-sm-6 col-lg-4 portfolio-item animate__animated animate__fadeInUp" data-aos="fade-up">
+                    <div class="card border-0 shadow-sm h-100">
                         <img src="assets/project5.png" class="card-img-top" alt="Project 5"
                             style="height: 200px; object-fit: cover;">
                         <div class="card-body d-flex flex-column">
@@ -387,8 +389,8 @@ https://job-listing-eta-sandy.vercel.app/
                     </div>
                 </div>
 
-                <div class="col-11 col-sm-6 col-lg-4 animate__animated animate__fadeInUp">
-                    <div class="portfolio-item card border-0 shadow-sm h-100">
+                <div class="col-11 col-sm-6 col-lg-4 portfolio-item animate__animated animate__fadeInUp" data-aos="fade-up">
+                    <div class="card border-0 shadow-sm h-100">
                         <img src="assets/project6.png" class="card-img-top" alt="Project 5"
                             style="height: 200px; object-fit: cover;">
                         <div class="card-body d-flex flex-column">
@@ -414,8 +416,8 @@ https://job-listing-eta-sandy.vercel.app/
                     </div>
                 </div>
 
-                <div class="col-11 col-sm-6 col-lg-4 animate__animated animate__fadeInUp">
-                    <div class="portfolio-item card border-0 shadow-sm h-100">
+                <div class="col-11 col-sm-6 col-lg-4 portfolio-item animate__animated animate__fadeInUp" data-aos="fade-up">
+                    <div class="card border-0 shadow-sm h-100">
                         <img src="assets/project7.png" class="card-img-top" alt="Project 5"
                             style="height: 200px; object-fit: cover;">
                         <div class="card-body d-flex flex-column">
@@ -439,8 +441,8 @@ https://job-listing-eta-sandy.vercel.app/
                     </div>
                 </div>
 
-                <div class="col-11 col-sm-6 col-lg-4 animate__animated animate__fadeInUp">
-                    <div class="portfolio-item card border-0 shadow-sm h-100">
+                <div class="col-11 col-sm-6 col-lg-4 portfolio-item animate__animated animate__fadeInUp" data-aos="fade-up">
+                    <div class="card border-0 shadow-sm h-100">
                         <img src="assets/project8.png" class="card-img-top" alt="Project 5"
                             style="height: 200px; object-fit: cover;">
                         <div class="card-body d-flex flex-column">
@@ -463,8 +465,8 @@ https://job-listing-eta-sandy.vercel.app/
                 </div>
 
 
-                <div class="col-11 col-sm-6 col-lg-4 animate__animated animate__fadeInUp">
-                    <div class="portfolio-item card border-0 shadow-sm h-100">
+                <div class="col-11 col-sm-6 col-lg-4 portfolio-item animate__animated animate__fadeInUp" data-aos="fade-up">
+                    <div class="card border-0 shadow-sm h-100">
                         <img src="assets/project9.png" class="card-img-top" alt="Project 5"
                             style="height: 200px; object-fit: cover;">
                         <div class="card-body d-flex flex-column">
@@ -495,7 +497,7 @@ https://job-listing-eta-sandy.vercel.app/
     <!-- portfolio section ends -->
 
     <!-- Contact section starts -->
-    <section class="contact min-vh-100 py-5" id="contact">
+    <section class="contact min-vh-100 py-5" id="contact" data-aos="zoom-in">
         <div class="container">
             <div class="row justify-content-center gy-5">
                 <div class="col-12 text-center mb-3">
@@ -611,6 +613,10 @@ https://job-listing-eta-sandy.vercel.app/
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
 
 </html>
