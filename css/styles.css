@@ -817,3 +817,9 @@ a:not(.btn):not(.nav-link):hover {
     background: var(--secondary-bg);
     color: var(--main-text);
 }
+
+/* Justify text in portfolio card descriptions */
+.card-body .card-text.card-text-min-height,
+.card-body .card-text.text-muted {
+    text-align: justify;
+}
