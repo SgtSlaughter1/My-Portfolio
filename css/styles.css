@@ -967,3 +967,37 @@ a:not(.btn):not(.nav-link):hover {
         gap: 0.5rem;
     }
 }
+
+/* Profile image circular, grayscale, and background effect */
+.profile-image-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 340px;
+    height: 340px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background: var(--primary-bg);
+    position: relative;
+    box-shadow: 0 0 60px 0 rgba(0,0,0,0.5);
+}
+.profile-image-ring {
+    width: 320px;
+    height: 320px;
+    background: rgba(255,255,255,0.18); /* more prominent ring */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 0 12px rgba(255,255,255,0.10), inset 0 0 32px 2px rgba(0,0,0,0.18); /* outer and inner shadow for depth */
+}
+.profile-image-effect {
+    width: 260px;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 50%;
+    filter: grayscale(100%);
+    /* box-shadow: 0 4px 32px rgba(0,0,0,0.4); */
+    background: transparent;
+    /* border: 4px solid rgba(255,255,255,0.12); */
+}
