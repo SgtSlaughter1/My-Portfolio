@@ -24,9 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
   setupReadMore('nebula-read-more', 'nebula-more-text');
   setupReadMore('edutams-read-more', 'edutams-more-text');
   setupReadMore('ogsera-read-more', 'ogsera-more-text');
-  setupReadMore('ecommerce-read-more', 'ecommerce-more-text');
   setupReadMore('ecommerce2-read-more', 'ecommerce2-more-text');
-  setupReadMore('ecommerce3-read-more', 'ecommerce3-more-text');
   setupReadMore('dessert-read-more', 'dessert-more-text');
   setupReadMore('portfolio-read-more', 'portfolio-more-text');
   setupReadMore('conference-read-more', 'conference-more-text');
