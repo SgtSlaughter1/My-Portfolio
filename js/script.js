@@ -32,6 +32,6 @@ document.addEventListener('DOMContentLoaded', function() {
   setupReadMore('conference-read-more', 'conference-more-text');
   setupReadMore('advice-read-more', 'advice-more-text');
   setupReadMore('job-read-more', 'job-more-text');
+  setupReadMore('ummah-read-more', 'ummah-more-text');
+  setupReadMore('nurture-read-more', 'nurture-more-text');
 });
-
-
