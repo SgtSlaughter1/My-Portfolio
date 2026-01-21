@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://habeeb-abdulsalam.vercel.app/sitemap.xml
