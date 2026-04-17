@@ -6,28 +6,32 @@ import Skills from './components/Skills';
 import Certificates from './components/Certificates';
 import Portfolio from './components/Portfolio';
 import Contact from './components/Contact';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import About from './components/About';
+import ScrollToTop from './components/ScrollToTop';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 function App() {
   useEffect(() => {
-    AOS.init({
-        duration: 1000,
-        easing: 'ease-in-out',
-        once: true,
-        mirror: false
-    });
+    // Refresh ScrollTrigger when components mount
+    ScrollTrigger.refresh();
   }, []);
 
   return (
-    <div>
+    <div className="bg-dark min-vh-100 overflow-x-hidden">
       <Navbar />
-      <Home />
-      <Experience />
-      <Skills />
-      <Certificates />
-      <Portfolio />
-      <Contact />
+      <main>
+        <Home />
+        <Portfolio />
+        <Skills />
+        <Experience />
+        <Certificates />
+        <About />
+        <Contact />
+      </main>
+      <ScrollToTop />
     </div>
   );
 }

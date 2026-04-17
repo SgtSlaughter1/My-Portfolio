@@ -1,159 +1,229 @@
-import React from 'react';
+import React, { useEffect, useRef } from "react";
+import { revealOnScroll } from "../utils/gsap-animations";
+import gsap from "gsap";
 
 const Contact = () => {
-  return (
-    <section className="contact min-vh-100 py-5" id="contact" data-aos="zoom-in">
-      <div className="container">
-        <div className="row justify-content-center gy-5">
-          <div className="col-12 text-center mb-3">
-            <h2 className="section-title">Contact Me</h2>
-          </div>
+  const sectionRef = useRef(null);
 
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      revealOnScroll(".contact-info-reveal", {
+        x: -50,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out",
+      });
+
+      revealOnScroll(".contact-form-reveal", {
+        x: 50,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out",
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section
+      className="contact py-5"
+      id="contact"
+      ref={sectionRef}
+    >
+      <div className="container">
+        {/* Header */}
+        <div className="row justify-content-center mb-5 contact-content-reveal">
+          <div className="col-12 text-center">
+            <span className="section-label">/ Contact</span>
+            <h2 className="display-4 fw-bold">Let’s Build Something Solid</h2>
+            <p className="text-secondary lead mx-auto" style={{ maxWidth: '650px' }}>
+              I am open to opportunities where I can contribute to building scalable, thoughtful, and well structured digital products.
+            </p>
+          </div>
+        </div>
+
+        {/* Main Contact Grid */}
+        <div className="row g-5 align-items-center mb-5 pb-5">
           {/* Contact Info Column */}
-          <div className="col-12 col-md-6 animate__animated animate__fadeInLeft">
-            <div className="contact-info">
-              <h3 className="contact-heading">Reach Out to me!</h3>
-              <p className="text-muted mb-4">
-                Discuss a Project or just want to say Hi? My inbox is open for
+          <div className="col-lg-5 contact-info-reveal">
+            <div className="glass-card p-4 p-md-5 h-100" style={{ backgroundColor: 'var(--secondary-bg)', borderRadius: '16px' }}>
+              <h3 className="h2 mb-4 text-white">Reach Out!</h3>
+              <p className="text-muted mb-5 lead">
+                Discuss a project or just want to say Hi? My inbox is open for
                 all.
               </p>
 
-              {/* Contact Details */}
-              <div className="contact-details mb-5">
-                <div className="contact-item d-flex align-items-center gap-2">
-                  <i className="fas fa-user"></i>
-                  <div>
-                    <div className="contact-label">Name</div>
-                    <div className="contact-text">Habeeb Abdulsalam</div>
+              <div className="contact-details">
+                <div className="d-flex align-items-center gap-4 mb-4">
+                  <div className="glass-pill p-3 text-primary-cta">
+                    <i className="bi bi-person fs-4"></i>
                   </div>
-                </div>
-
-                <div className="contact-item d-flex align-items-center gap-2">
-                  <i className="fas fa-map-marker-alt"></i>
                   <div>
-                    <div className="contact-label">Address</div>
-                    <div className="contact-text">Lagos, Nigeria</div>
-                  </div>
-                </div>
-
-                <div className="contact-item d-flex align-items-center gap-2">
-                  <i className="fas fa-envelope"></i>
-                  <div>
-                    <div className="contact-label">Email</div>
-                    <div>
-                      <a
-                        href="mailto:habeebabdulsalam86@gmail.com"
-                        className="contact-link"
-                      >
-                        habeebabdulsalam86@gmail.com
-                      </a>
+                    <div className="small text-muted text-uppercase tracking-wider">
+                      Name
+                    </div>
+                    <div className="h6 mb-0 text-white fw-bold">
+                      Habeeb Abdulsalam
                     </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Social Links */}
-              <h4 className="social-heading">Stay Connected</h4>
-              <div className="social-links">
-                <a
-                  href="https://www.linkedin.com/in/abdulsalam-habeeb-9909592a2/"
-                  className="social-btn"
-                  aria-label="LinkedIn Profile"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <i className="fab fa-linkedin-in"></i>
-                  <span>LinkedIn</span>
-                </a>
+                <div className="d-flex align-items-center gap-4 mb-4">
+                  <div className="glass-pill p-3 text-primary-cta">
+                    <i className="bi bi-geo-alt fs-4"></i>
+                  </div>
+                  <div>
+                    <div className="small text-muted text-uppercase tracking-wider">
+                      Location
+                    </div>
+                    <div className="h6 mb-0 text-white fw-bold">
+                      Ijebu-Ode, Nigeria
+                    </div>
+                  </div>
+                </div>
 
-                <a href="https://github.com/SgtSlaughter1" className="social-btn" aria-label="GitHub Profile" target="_blank" rel="noreferrer">
-                  <i className="fab fa-github"></i>
-                  <span>Github</span>
-                </a>
-
-
-                <a
-                  href="https://wa.me/2349076630104"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="social-btn"
-                  aria-label="Contact on WhatsApp"
-                >
-                  <i className="fab fa-whatsapp"></i>
-                  <span>WhatsApp</span>
-                </a>
-
+                <div className="d-flex align-items-center gap-4">
+                  <div className="glass-pill p-3 text-primary-cta">
+                    <i className="bi bi-envelope fs-4"></i>
+                  </div>
+                  <div>
+                    <div className="small text-muted text-uppercase tracking-wider">
+                      Email
+                    </div>
+                    <a
+                      href="mailto:habeebabdulsalam86@gmail.com"
+                      className="h6 mb-0 text-white fw-bold text-decoration-none hover-text-primary transition-all"
+                    >
+                      habeebabdulsalam86@gmail.com
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
           {/* Contact Form Column */}
-          <div className="col-12 col-md-6 animate__animated animate__fadeInRight">
-            <div className="contact-form">
-              <h3 className="contact-heading">Message me</h3>
+          <div className="col-lg-7 contact-form-reveal">
+            <div className="glass-card p-4 p-md-5" style={{ backgroundColor: 'var(--secondary-bg)', borderRadius: '16px' }}>
+              <h3 className="h3 mb-4 text-white">Message Me</h3>
               <form
                 action="mailto:habeebabdulsalam86@gmail.com"
                 method="POST"
-                enctype="text/plain"
+                encType="text/plain"
               >
                 <div className="row g-4">
-                  <div className="col-12 col-sm-6">
+                  <div className="col-md-6">
                     <div className="form-floating">
                       <input
                         type="text"
-                        className="form-control"
+                        className="form-control glass-pill border-0 text-white px-4"
                         name="name"
                         placeholder="Name"
                         required
+                        style={{ background: 'rgba(255,255,255,0.03)' }}
                       />
-                      <label htmlFor="nameInput">Name</label>
+                      <label className="text-muted ms-2">Your Name</label>
                     </div>
                   </div>
-                  <div className="col-12 col-sm-6">
+                  <div className="col-md-6">
                     <div className="form-floating">
                       <input
                         type="email"
-                        className="form-control"
+                        className="form-control glass-pill border-0 text-white px-4"
                         name="email"
                         placeholder="Email"
                         required
+                        style={{ background: 'rgba(255,255,255,0.03)' }}
                       />
-                      <label htmlFor="emailInput">Email</label>
+                      <label className="text-muted ms-2">Email Address</label>
                     </div>
                   </div>
                   <div className="col-12">
                     <div className="form-floating">
                       <input
                         type="text"
-                        className="form-control"
+                        className="form-control glass-pill border-0 text-white px-4"
                         name="subject"
                         placeholder="Subject"
                         required
+                        style={{ background: 'rgba(255,255,255,0.03)' }}
                       />
-                      <label htmlFor="subjectInput">Subject</label>
+                      <label className="text-muted ms-2">Subject</label>
                     </div>
                   </div>
                   <div className="col-12">
                     <div className="form-floating">
                       <textarea
-                        className="form-control"
+                        className="form-control glass-card border-0 text-white px-4 py-3"
                         name="message"
-                        style={{ height: '150px' }}
-                        placeholder="Describe Project..."
+                        style={{ height: "180px", borderRadius: "24px", background: 'rgba(255,255,255,0.03)' }}
+                        placeholder="Message"
                         required
                       ></textarea>
-                      <label htmlFor="messageInput">Describe Project...</label>
+                      <label className="text-muted ms-2">
+                        Describe your project...
+                      </label>
                     </div>
                   </div>
-                  <div className="col-12">
-                    <button type="submit" className="submit-btn">
-                      Send Message
-                      <i className="fas fa-paper-plane ms-2"></i>
+                  <div className="col-12 text-end">
+                    <button
+                      type="submit"
+                      className="btn glass-pill px-5 py-3 fw-bold text-dark border-0 transition-all hover-translate-y"
+                      style={{ backgroundColor: 'var(--primary-cta)' }}
+                    >
+                      Send Message{" "}
+                      <i className="bi bi-send-fill ms-2"></i>
                     </button>
                   </div>
                 </div>
               </form>
             </div>
+          </div>
+        </div>
+
+        {/* Footer Area */}
+        <div className="row mt-5 pt-5 border-top border-secondary border-opacity-10 opacity-75">
+          <div className="col-12 text-center small">
+            <p className="mb-1 text-white fw-medium">Designed and built by Habeeb Abdulsalam</p>
+            <p className="text-secondary mb-0">Focused on structure, systems, and user centered web experiences</p>
+            
+            <div className="d-flex justify-content-center flex-wrap gap-4 mt-4 mb-4">
+              <a
+                href="https://www.linkedin.com/in/abdulsalam-habeeb-9909592a2/"
+                target="_blank"
+                rel="noreferrer"
+                className="social-pill transition-all hover-translate-y"
+              >
+                <i className="bi bi-linkedin fs-5 text-white"></i>
+              </a>
+              <a
+                href="https://github.com/SgtSlaughter1"
+                target="_blank"
+                rel="noreferrer"
+                className="social-pill transition-all hover-translate-y"
+              >
+                <i className="bi bi-github fs-5 text-white"></i>
+              </a>
+              <a
+                href="https://wa.me/2349076630104"
+                target="_blank"
+                rel="noreferrer"
+                className="social-pill transition-all hover-translate-y"
+              >
+                <i className="bi bi-whatsapp fs-5 text-white"></i>
+              </a>
+              <a
+                href="mailto:habeebabdulsalam86@gmail.com"
+                className="social-pill transition-all hover-translate-y"
+              >
+                <i className="bi bi-envelope fs-5 text-white"></i>
+              </a>
+            </div>
+            
+            <p className="text-muted opacity-50 mb-0">
+              © {new Date().getFullYear()} Habeeb Abdulsalam. All rights reserved.
+            </p>
           </div>
         </div>
       </div>

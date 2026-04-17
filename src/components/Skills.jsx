@@ -1,147 +1,98 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import { revealOnScroll } from '../utils/gsap-animations';
+import gsap from 'gsap';
 
 const Skills = () => {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      revealOnScroll('.skills-group', {
+        y: 40,
+        opacity: 0,
+        stagger: 0.1,
+        duration: 0.8,
+        ease: 'power2.out'
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  const skillGroups = [
+    {
+      title: 'Frontend',
+      skills: [
+        { name: 'Vue', src: '/assets/cdnlogo.com_vue-js.svg' },
+        { name: 'React', src: '/assets/react.png' },
+        { name: 'Next Js', src: '/assets/nextjs.png' },
+        { name: 'JavaScript', src: '/assets/javascript.png' },
+        { name: 'Tailwind CSS', src: '/assets/tailwind-css.png' },
+        { name: 'HTML', src: '/assets/html5.png' },
+        { name: 'CSS', src: '/assets/css3.png' }
+      ]
+    },
+    {
+      title: 'Backend',
+      skills: [
+        { name: 'Laravel', src: '/assets/laravel.png' },
+        { name: 'PHP', src: '/assets/PHP-logo.svg.png' },
+        { name: 'REST APIs', src: '/assets/node-js.png' }
+      ]
+    },
+    {
+      title: 'Database',
+      skills: [
+        { name: 'MySQL', src: '/assets/pngimg.com - mysql_PNG9.png' },
+        { name: 'Postgres', src: '/assets/postgres.png' } // Placeholder path, I'll assume assets exist or use generic
+      ]
+    },
+    {
+      title: 'Tools',
+      skills: [
+        { name: 'Git', src: '/assets/git.png' },
+        { name: 'GitHub', src: '/assets/github.png' },
+        { name: 'Postman', src: '/assets/node-js.png' }, // Placeholder icons
+        { name: 'Vercel', src: '/assets/react.png' } // Placeholder
+      ]
+    }
+  ];
+
   return (
-    <section
-      className="skills min-vh-100 py-5 d-flex align-items-center"
-      id="skills"
-      data-aos="fade-right"
-    >
+    <section className="skills py-5" id="skills" ref={sectionRef}>
       <div className="container">
-        <div className="row justify-content-center gy-4">
-          <div className="col-12 text-center mb-3 mb-md-5">
-            <h2 className="fw-bold" style={{ color: '#3f396d' }}>My Skills</h2>
-          </div>
-
-          <div
-            className="col-11 col-sm-10 col-md-6 animate__animated animate__fadeInLeft"
-          >
-            <h3 className="c-orange mb-3 text-center text-md-start">
-              My Creative Skills & Experience
-            </h3>
-            <p className="text-muted">
-              I am committed to web development, having built a strong
-              foundation in HTML and CSS for creating responsive websites. I
-              have since expanded my expertise to include JavaScript and
-              frameworks like Vue.js, Nuxt.js for developing dynamic user
-              interfaces.
-            </p>
-
-            <p className="text-muted">
-              On the backend, I work with PHP, Laravel, and databases such as
-              MySQL and SQL to create robust web applications. This combination
-              of front-end and back-end skills allows me to deliver seamless,
-              end-to-end web solutions.
-            </p>
-
-            <p className="text-muted">
-              I am dedicated to continuous learning to keep up with modern web
-              development trends, ensuring that I deliver clean, efficient, and
-              user-friendly solutions for every project.
+        <div className="row justify-content-center mb-5">
+          <div className="col-12 text-center">
+            <span className="section-label">/ Skills</span>
+            <h2 className="display-4 fw-bold">Tech Stack</h2>
+            <p className="text-secondary mx-auto" style={{ maxWidth: 'min(750px, 90%)' }}>
+              My journey building and contributing to web applications and structured digital systems.
             </p>
           </div>
+        </div>
 
-          <div
-            className="col-11 col-sm-10 col-md-5 animate__animated animate__fadeInRight"
-          >
-            <div className="skills-grid">
-              {/* Frontend */}
-              <img
-                loading="lazy"
-                src="/assets/react.png"
-                alt="React"
-                className="skill-icon"
-                title="React"
-              />
-              <img
-                loading="lazy"
-                src="/assets/html5.png"
-                alt="HTML5"
-                className="skill-icon"
-                title="HTML5"
-              />
-              <img
-                loading="lazy"
-                src="/assets/css3.png"
-                alt="CSS3"
-                className="skill-icon"
-                title="CSS3"
-              />
-              <img
-                loading="lazy"
-                src="/assets/javascript.png"
-                alt="JavaScript"
-                className="skill-icon"
-                title="JavaScript"
-              />
-              <img
-                loading="lazy"
-                src="/assets/bootstrap.png"
-                alt="Bootstrap"
-                className="skill-icon"
-                title="Bootstrap"
-              />
-              <img
-                loading="lazy"
-                src="/assets/cdnlogo.com_vue-js.svg"
-                alt="Vue.js"
-                className="skill-icon"
-                title="Vue.js"
-              />
-              <img
-                loading="lazy"
-                src="/assets/nuxt.svg"
-                alt="Figma"
-                className="skill-icon"
-                title="Nuxt"
-              />
-              <img
-                loading="lazy"
-                src="/assets/figmalogo.png"
-                alt="Figma"
-                className="skill-icon"
-                title="UI/UX Design"
-              />
-
-              {/* Backend */}
-              <img
-                loading="lazy"
-                src="/assets/PHP-logo.svg.png"
-                alt="PHP"
-                className="skill-icon"
-                title="PHP"
-              />
-              <img
-                loading="lazy"
-                src="/assets/pngimg.com - mysql_PNG9.png"
-                alt="MySQL"
-                className="skill-icon"
-                title="MySQL"
-              />
-              <img
-                loading="lazy"
-                src="/assets/laravel.png"
-                alt="Laravel"
-                className="skill-icon"
-                title="Laravel"
-              />
-              {/* Tools */}
-              <img
-                loading="lazy"
-                src="/assets/git.png"
-                alt="Git"
-                className="skill-icon"
-                title="Git"
-              />
-              <img
-                loading="lazy"
-                src="/assets/github.png"
-                alt="GitHub"
-                className="skill-icon"
-                title="GitHub"
-              />
+        <div className="row g-4">
+          {skillGroups.map((group, gIndex) => (
+            <div key={gIndex} className="col-md-6 col-lg-3 skills-group">
+              <div className="glass-card h-100 p-4" style={{ backgroundColor: 'var(--secondary-bg)', borderRadius: '16px' }}>
+                <h3 className="h5 fw-bold mb-4 text-primary-cta font-mono" style={{ textTransform: 'uppercase', letterSpacing: '1px' }}>
+                  {group.title}
+                </h3>
+                <div className="d-flex flex-wrap gap-3">
+                  {group.skills.map((skill, sIndex) => (
+                    <div key={sIndex} className="d-flex align-items-center gap-2 group p-2 rounded-3 transition-all hover-translate-y" style={{ background: 'rgba(255,255,255,0.03)', width: '100%' }}>
+                      <img
+                        src={skill.src}
+                        alt={skill.name}
+                        style={{ width: 'clamp(20px, 2vw, 24px)', height: 'clamp(20px, 2vw, 24px)', objectFit: 'contain' }}
+                      />
+                      <span className="text-secondary" style={{ fontSize: 'clamp(13px, 1.2vw, 14px)', fontWeight: '500' }}>{skill.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
