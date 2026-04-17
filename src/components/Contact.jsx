@@ -8,14 +8,14 @@ const Contact = () => {
   useEffect(() => {
     const ctx = gsap.context(() => {
       revealOnScroll(".contact-info-reveal", {
-        x: -50,
+        x: -30,
         opacity: 0,
         duration: 1,
         ease: "power3.out",
       });
 
       revealOnScroll(".contact-form-reveal", {
-        x: 50,
+        x: 30,
         opacity: 0,
         duration: 1,
         ease: "power3.out",
@@ -37,7 +37,7 @@ const Contact = () => {
           <div className="col-12 text-center">
             <span className="section-label">/ Contact</span>
             <h2 className="display-4 fw-bold">Let’s Build Something Solid</h2>
-            <p className="text-secondary lead mx-auto" style={{ maxWidth: '650px' }}>
+            <p className="text-secondary mx-auto" style={{ maxWidth: 'min(750px, 90%)', fontSize: 'clamp(1rem, 2vw, 1.15rem)' }}>
               I am open to opportunities where I can contribute to building scalable, thoughtful, and well structured digital products.
             </p>
           </div>
@@ -47,9 +47,9 @@ const Contact = () => {
         <div className="row g-5 align-items-center mb-5 pb-5">
           {/* Contact Info Column */}
           <div className="col-lg-5 contact-info-reveal">
-            <div className="glass-card p-4 p-md-5 h-100" style={{ backgroundColor: 'var(--secondary-bg)', borderRadius: '16px' }}>
+            <div className="glass-card p-4 p-md-5 h-100" style={{ backgroundColor: 'var(--secondary-bg)' }}>
               <h3 className="h2 mb-4 text-white">Reach Out!</h3>
-              <p className="text-muted mb-5 lead">
+              <p className="text-muted mb-5" style={{ fontSize: 'clamp(1rem, 2vw, 1.1rem)' }}>
                 Discuss a project or just want to say Hi? My inbox is open for
                 all.
               </p>
@@ -157,7 +157,7 @@ const Contact = () => {
                       <textarea
                         className="form-control glass-card border-0 text-white px-4 py-3"
                         name="message"
-                        style={{ height: "180px", borderRadius: "24px", background: 'rgba(255,255,255,0.03)' }}
+                        style={{ height: "180px", background: 'rgba(255,255,255,0.03)' }}
                         placeholder="Message"
                         required
                       ></textarea>

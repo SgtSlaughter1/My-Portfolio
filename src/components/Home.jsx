@@ -1,12 +1,14 @@
 import React, { useEffect, useRef } from "react";
 import { createMagneticEffect, floatAnimation } from "../utils/gsap-animations";
 import gsap from "gsap";
+import { MotionPathPlugin } from "gsap/MotionPathPlugin";
+
+gsap.registerPlugin(MotionPathPlugin);
 
 const Home = () => {
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
   const introRef = useRef(null);
-  const subtitleRef = useRef(null);
   const descriptionRef = useRef(null);
   const btnContainerRef = useRef(null);
   const imageRef = useRef(null);
@@ -41,16 +43,15 @@ const Home = () => {
         0.5,
       )
 
-        // 3. Reveal Sub-headline and Description
+        // 3. Reveal Lead Description
         .from(
-          [subtitleRef.current, descriptionRef.current],
+          descriptionRef.current,
           {
             opacity: 0,
             y: 20,
             duration: 1,
-            stagger: 0.2,
           },
-          "-=0.8",
+          "-=0.8"
         )
 
         // 4. Staggered reveal of buttons
@@ -87,11 +88,47 @@ const Home = () => {
             duration: 1.5,
             ease: "power3.out",
           },
-          0.8,
+          0.8
+        )
+        .from(
+          ".hero-svg-illustration",
+          {
+            scale: 0,
+            opacity: 0,
+            duration: 1,
+            ease: "back.out(1.7)",
+          },
+          "-=0.5"
         );
 
       // Floating animation for terminal card
       floatAnimation(imageRef.current);
+
+      // Elliptical Orbit Animation for SVG
+      gsap.to(".hero-svg-illustration", {
+        duration: 20,
+        repeat: -1,
+        ease: "none",
+        motionPath: {
+          path: [
+            { x: -300, y: -50 },
+            { x: 0, y: 150 },
+            { x: 300, y: -50 },
+            { x: 0, y: -250 },
+            { x: -300, y: -50 }
+          ],
+          curviness: 1.5,
+          autoRotate: true
+        }
+      });
+
+      // Secondary floating/rotation
+      gsap.to(".hero-svg-illustration svg", {
+        rotation: 360,
+        duration: 10,
+        repeat: -1,
+        ease: "none"
+      });
 
       // Magnetic effect for button
       if (magneticBtnRef.current) {
@@ -141,25 +178,18 @@ const Home = () => {
               </h1>
             </div>
 
-            <h2
-              className="h4 text-secondary mb-4 opacity-100"
-              style={{ fontWeight: 400 }}
-              ref={subtitleRef}
-            >
-              Full Stack Developer specializing in clean backend logic and
-              modern frontend experiences.
-            </h2>
-
             <p
-              className="text-muted mb-5 mx-auto mx-lg-0"
-              style={{ maxWidth: "600px" }}
+              className="text-secondary mb-5 mx-auto mx-lg-0"
+              style={{
+                maxWidth: "600px",
+                fontSize: "clamp(1rem, 2vw, 1.15rem)",
+                lineHeight: "1.7",
+              }}
               ref={descriptionRef}
             >
-              I build structured, scalable web applications with{" "}
-              <span className="text-white">
-                Laravel, Next.js, Vue.js, React, and MySQL
-              </span>
-              .
+              Full Stack Developer crafting structured, high-performance digital
+              solutions with a focus on clean architecture and seamless user
+              experiences.
             </p>
 
             <div
@@ -218,14 +248,68 @@ const Home = () => {
               ))}
             </div>
           </div>
-
           <div className="col-lg-5 text-center">
-            {/* Terminal Style UI Card */}
             <div
-              className="mx-auto"
+              className="mx-auto position-relative"
               style={{ maxWidth: "450px" }}
               ref={imageRef}
             >
+              {/* Animated SVG Decoration */}
+              <div
+                className="hero-svg-illustration position-absolute"
+                style={{
+                  top: "50%",
+                  left: "50%",
+                  zIndex: 10,
+                  opacity: 0.6,
+                  width: "120px",
+                  height: "120px",
+                  pointerEvents: "none",
+                }}
+              >
+                <svg
+                  viewBox="0 0 200 200"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    cx="100"
+                    cy="100"
+                    r="80"
+                    stroke="var(--primary-cta)"
+                    strokeWidth="0.5"
+                    strokeDasharray="5 5"
+                  />
+                  <circle
+                    cx="100"
+                    cy="100"
+                    r="60"
+                    stroke="var(--accent-soft)"
+                    strokeWidth="1"
+                  />
+                  <path
+                    d="M100 20V180M20 100H180"
+                    stroke="var(--primary-cta)"
+                    strokeWidth="0.5"
+                    opacity="0.3"
+                  />
+                  <rect
+                    x="80"
+                    y="80"
+                    width="40"
+                    height="40"
+                    rx="4"
+                    stroke="var(--primary-cta)"
+                    strokeWidth="1"
+                    className="rotating-rect"
+                  />
+                  <circle cx="100" cy="20" r="4" fill="var(--primary-cta)" />
+                  <circle cx="180" cy="100" r="4" fill="var(--accent-soft)" />
+                  <circle cx="100" cy="180" r="4" fill="var(--primary-cta)" />
+                  <circle cx="20" cy="100" r="4" fill="var(--accent-soft)" />
+                </svg>
+              </div>
+
               <div
                 className="glass-card p-0 overflow-hidden border-0 shadow-2xl"
                 style={{

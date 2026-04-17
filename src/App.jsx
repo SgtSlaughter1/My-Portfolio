@@ -8,6 +8,7 @@ import Portfolio from './components/Portfolio';
 import Contact from './components/Contact';
 import About from './components/About';
 import ScrollToTop from './components/ScrollToTop';
+import CustomCursor from './components/CustomCursor';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -32,6 +33,7 @@ function App() {
         <Contact />
       </main>
       <ScrollToTop />
+      <CustomCursor />
     </div>
   );
 }
