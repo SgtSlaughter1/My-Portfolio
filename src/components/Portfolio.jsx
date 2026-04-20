@@ -115,7 +115,7 @@ const Portfolio = () => {
       description:
         "A responsive ticket generation form for a coding conference, allowing users to generate and download their own event tickets.",
       techStack: "HTML5, CSS3, JavaScript, Bootstrap",
-      liveDemoLink: "#",
+      liveDemoLink: "https://conferenceticket-alpha.vercel.app/",
     },
   ];
 
