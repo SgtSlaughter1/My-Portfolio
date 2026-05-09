@@ -1,9 +1,33 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { revealOnScroll } from "../utils/gsap-animations";
 import gsap from "gsap";
 
 const Certificates = () => {
   const sectionRef = useRef(null);
+  const [selectedCert, setSelectedCert] = useState(null);
+
+  // Scroll Lock when modal is active
+  useEffect(() => {
+    if (selectedCert) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [selectedCert]);
+
+  // Key listener for Escape to close modal
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setSelectedCert(null);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -155,7 +179,19 @@ const Certificates = () => {
               key={index}
               className="col-md-6 col-lg-4 certificate-item-wrapper"
             >
-              <div className="certificate-item glass-card overflow-hidden position-relative group transition-all hover-translate-y">
+              <div 
+                className="certificate-item glass-card overflow-hidden position-relative group transition-all hover-translate-y"
+                role="button"
+                tabIndex={0}
+                onClick={() => setSelectedCert(cert)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    setSelectedCert(cert);
+                  }
+                }}
+                style={{ cursor: "pointer" }}
+              >
                 <img
                   loading="lazy"
                   src={cert.img}
@@ -182,6 +218,42 @@ const Certificates = () => {
             </div>
           ))}
         </div>
+      </div>
+
+      {/* Certificate Preview Modal */}
+      <div
+        className={`certificate-modal-overlay ${selectedCert ? "active" : ""}`}
+        onClick={() => setSelectedCert(null)}
+      >
+        {selectedCert && (
+          <div
+            className="certificate-modal-content"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className="certificate-modal-close-btn"
+              onClick={() => setSelectedCert(null)}
+              aria-label="Close Preview"
+            >
+              <i className="bi bi-x-lg"></i>
+            </button>
+            <div className="certificate-modal-img-container">
+              <img
+                src={selectedCert.img}
+                alt={selectedCert.title}
+                className="certificate-modal-img"
+              />
+            </div>
+            <div className="certificate-modal-details">
+              <h4 className="fw-bold text-white mb-2" style={{ fontFamily: "Manrope, sans-serif" }}>
+                {selectedCert.title}
+              </h4>
+              <p className="text-secondary mb-0">
+                {selectedCert.desc}
+              </p>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

@@ -1078,3 +1078,116 @@ a:not(.btn):not(.nav-link):hover {
     cursor: auto !important;
   }
 }
+
+/* Certificate Modal Styles */
+.certificate-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(11, 16, 32, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 9990;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.certificate-modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.certificate-modal-content {
+  background: var(--secondary-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  max-width: 850px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 40px rgba(56, 189, 248, 0.15);
+  transform: scale(0.9);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.certificate-modal-overlay.active .certificate-modal-content {
+  transform: scale(1);
+}
+
+.certificate-modal-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(31, 41, 55, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.certificate-modal-close-btn:hover {
+  background: var(--primary-cta);
+  color: var(--primary-bg) !important;
+  box-shadow: 0 0 15px var(--primary-cta);
+  border-color: var(--primary-cta);
+}
+
+.certificate-modal-img-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem;
+}
+
+.certificate-modal-img {
+  max-width: 100%;
+  max-height: 55vh;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+}
+
+.certificate-modal-details {
+  padding: 1.5rem;
+  background-color: var(--secondary-bg);
+}
+
+@media (max-width: 576px) {
+  .certificate-modal-overlay {
+    padding: 1rem;
+  }
+  
+  .certificate-modal-close-btn {
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 32px;
+    height: 32px;
+    font-size: 0.95rem;
+  }
+  
+  .certificate-modal-details {
+    padding: 1.25rem;
+  }
+}
