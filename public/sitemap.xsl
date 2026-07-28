@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="2.0" 
+<xsl:stylesheet version="1.0" 
                 xmlns:html="http://www.w3.org/TR/REC-html40"
                 xmlns:sitemap="http://www.sitemaps.org/schemas/sitemap/0.9"
-                xmlns:xsl="http://www.w3.org/2019/XSL/Transform">
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:output method="html" version="1.0" encoding="UTF-8" indent="yes"/>
   <xsl:template match="/">
     <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
@@ -11,14 +11,14 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <style type="text/css">
           body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background-color: #0B1020;
             color: #F8FAFC;
             padding: 2rem;
             margin: 0;
           }
           .container {
-            max-width: 900px;
+            max-width: 950px;
             margin: 0 auto;
             background: #111827;
             border: 1px solid #334155;
@@ -81,7 +81,7 @@
       <body>
         <div class="container">
           <h1>XML Sitemap</h1>
-          <p>This is a dynamic XML sitemap generated for Google Search Console and web indexers.</p>
+          <p>This is a dynamic XML sitemap generated for search engines and web crawlers.</p>
           <table>
             <thead>
               <tr>
@@ -92,21 +92,21 @@
               </tr>
             </thead>
             <tbody>
-              <xsl:for-each select="sitemap:urlset/sitemap:url">
+              <xsl:for-each select="*[local-name()='urlset']/*[local-name()='url']">
                 <tr>
                   <td>
-                    <a href="{sitemap:loc}" target="_blank">
-                      <xsl:value-of select="sitemap:loc"/>
+                    <a href="{*[local-name()='loc']}" target="_blank">
+                      <xsl:value-of select="*[local-name()='loc']"/>
                     </a>
                   </td>
                   <td>
-                    <span class="badge"><xsl:value-of select="sitemap:priority"/></span>
+                    <span class="badge"><xsl:value-of select="*[local-name()='priority']"/></span>
                   </td>
                   <td>
-                    <xsl:value-of select="sitemap:changefreq"/>
+                    <xsl:value-of select="*[local-name()='changefreq']"/>
                   </td>
                   <td>
-                    <xsl:value-of select="sitemap:lastmod"/>
+                    <xsl:value-of select="*[local-name()='lastmod']"/>
                   </td>
                 </tr>
               </xsl:for-each>
