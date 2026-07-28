@@ -60,6 +60,7 @@ const ProjectDetailsPage = ({
           name="title"
           content={`${project.title} | Habeeb Abdulsalam - Project Case Study`}
         />
+        <meta name="application-name" content="Habeeb Abdulsalam" />
         <meta name="description" content={project.description} />
         <link
           rel="canonical"
@@ -68,6 +69,7 @@ const ProjectDetailsPage = ({
 
         {/* Open Graph */}
         <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Habeeb Abdulsalam" />
         <meta
           property="og:url"
           content={`https://habeeb-abdulsalam.vercel.app/project/${project.id}`}

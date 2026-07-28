@@ -95,6 +95,7 @@ function App({ initialProjectSlug = null }) {
       <Helmet>
         <title>Habeeb Abdulsalam | Full Stack Developer</title>
         <meta name="title" content="Habeeb Abdulsalam | Full Stack Developer" />
+        <meta name="application-name" content="Habeeb Abdulsalam" />
         <meta
           name="description"
           content="Full Stack Developer focused on building scalable, technical web applications with Laravel, Next.js, and React. Architecting clean systems and modern digital experiences."
@@ -107,6 +108,7 @@ function App({ initialProjectSlug = null }) {
 
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Habeeb Abdulsalam" />
         <meta
           property="og:url"
           content="https://habeeb-abdulsalam.vercel.app/"
@@ -200,7 +202,11 @@ function App({ initialProjectSlug = null }) {
                 "@type": "WebSite",
                 "@id": "https://habeeb-abdulsalam.vercel.app/#website",
                 url: "https://habeeb-abdulsalam.vercel.app/",
-                name: "Habeeb Abdulsalam Portfolio",
+                name: "Habeeb Abdulsalam",
+                alternateName: [
+                  "Habeeb Abdulsalam Portfolio",
+                  "Habeeb Abdulsalam - Full Stack Developer"
+                ],
                 description: "Full Stack Developer Portfolio",
                 publisher: {
                   "@id": "https://habeeb-abdulsalam.vercel.app/#person",
