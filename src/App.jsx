@@ -1,254 +1,133 @@
-import React, { useEffect, useState } from "react";
-import { Helmet } from "react-helmet-async";
-import Navbar from "./components/Navbar";
-import Home from "./components/Home";
-import Experience from "./components/Experience";
-import Skills from "./components/Skills";
-import Certificates from "./components/Certificates";
-import Portfolio from "./components/Portfolio";
-import Contact from "./components/Contact";
-import About from "./components/About";
-import ScrollToTop from "./components/ScrollToTop";
-import CustomCursor from "./components/CustomCursor";
-import ProjectDetailsPage from "./components/ProjectDetailsPage";
-import { projectsData } from "./data/projectsData";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect } from "react";
+import SiteHeader from "./components/SiteHeader";
+import ContactFooter from "./components/ContactFooter";
+import Seo from "./components/Seo";
+import HomePage from "./pages/HomePage";
+import ProjectPage from "./pages/ProjectPage";
+import { navigate, usePath } from "./lib/router";
+import Link from "./components/Link";
+import { projects, getProject, legacySlugs } from "./data/projects";
+import { SITE_URL, profile, stack } from "./data/profile";
 
-gsap.registerPlugin(ScrollTrigger);
+const HOME_TITLE = `${profile.name} | Fullstack Developer & AI Engineer`;
+const HOME_DESCRIPTION =
+  "Fullstack developer building dependable web platforms with Laravel, Vue, React and Next.js, and AI agents with RAG and tool calling. Case studies from education, health, commerce and charity.";
 
-function App({ initialProjectSlug = null }) {
-  const [currentProjectSlug, setCurrentProjectSlug] =
-    useState(initialProjectSlug);
+const personLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  jobTitle: profile.role,
+  url: `${SITE_URL}/`,
+  image: `${SITE_URL}${profile.photo}`,
+  email: `mailto:${profile.email}`,
+  sameAs: [profile.github, profile.linkedin],
+  address: { "@type": "PostalAddress", addressLocality: "Ijebu Ode", addressCountry: "Nigeria" },
+  worksFor: { "@type": "Organization", name: "Edutams" },
+  alumniOf: { "@type": "CollegeOrUniversity", name: "Olabisi Onabanjo University" },
+  knowsAbout: stack.flatMap((row) => row.items),
+};
 
+function slugFromPath(path) {
+  const m = path.match(/^\/project\/([^/]+)\/?$/);
+  return m ? decodeURIComponent(m[1]) : null;
+}
+
+export default function App({ initialPath = "/" }) {
+  const path = usePath(initialPath);
+  const slug = slugFromPath(path);
+  const project = slug ? getProject(slug) : null;
+  const isHome = path === "/" || path === "/index.html";
+
+  // Old links used #/project/<slug>; move them to the real URL.
   useEffect(() => {
-    const handleHashChange = () => {
-      if (typeof window === "undefined") return;
-      const hash = window.location.hash;
-      if (hash.startsWith("#/project/")) {
-        const slug = hash.replace("#/project/", "");
-        setCurrentProjectSlug(slug);
-      } else {
-        setCurrentProjectSlug(null);
-      }
+    const redirectLegacyHash = () => {
+      const m = window.location.hash.match(/^#\/project\/(.+)$/);
+      if (!m) return;
+      const target = legacySlugs[m[1]] ?? m[1];
+      navigate(getProject(target) ? `/project/${target}` : "/", { replace: true });
     };
-
-    if (typeof window !== "undefined") {
-      if ('scrollRestoration' in window.history) {
-        window.history.scrollRestoration = 'manual';
-      }
-      handleHashChange();
-      window.addEventListener("hashchange", handleHashChange);
-    }
-    return () => {
-      if (typeof window !== "undefined") {
-        window.removeEventListener("hashchange", handleHashChange);
-      }
-    };
+    redirectLegacyHash();
+    window.addEventListener("hashchange", redirectLegacyHash);
+    return () => window.removeEventListener("hashchange", redirectLegacyHash);
   }, []);
 
+  // Land at the right spot after each route change.
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-    }
-    // Refresh ScrollTrigger when layout switches
-    const timer = setTimeout(() => {
-      if (typeof window !== "undefined") {
-        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-      }
-      ScrollTrigger.refresh();
-    }, 100);
-    const raf = requestAnimationFrame(() => {
-      if (typeof window !== "undefined") {
-        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-      }
-    });
-    return () => {
-      clearTimeout(timer);
-      cancelAnimationFrame(raf);
-    };
-  }, [currentProjectSlug]);
-
-  const currentProject = projectsData.find((p) => p.id === currentProjectSlug);
-  const currentProjectIndex = projectsData.findIndex(
-    (p) => p.id === currentProjectSlug,
-  );
-  const nextProjectSlug =
-    currentProjectIndex !== -1 && currentProjectIndex < projectsData.length - 1
-      ? projectsData[currentProjectIndex + 1].id
-      : null;
-
-  const handleBackToHome = () => {
-    if (typeof window !== "undefined") {
-      window.location.hash = "#portfolio";
-    }
-  };
-
-  const handleNavigateToProject = (slug) => {
-    if (typeof window !== "undefined") {
-      window.location.hash = `#/project/${slug}`;
-    }
-  };
+    const id = window.location.hash.slice(1);
+    const el = id && !id.startsWith("/") ? document.getElementById(id) : null;
+    if (el) el.scrollIntoView();
+    else window.scrollTo(0, 0);
+  }, [path]);
 
   return (
-    <div className="bg-dark min-vh-100 overflow-x-hidden">
-      <Helmet>
-        <title>Habeeb Abdulsalam | Full Stack Developer</title>
-        <meta name="title" content="Habeeb Abdulsalam | Full Stack Developer" />
-        <meta name="application-name" content="Habeeb Abdulsalam" />
-        <meta
-          name="description"
-          content="Full Stack Developer focused on building scalable, technical web applications with Laravel, Next.js, and React. Architecting clean systems and modern digital experiences."
-        />
-        <meta
-          name="keywords"
-          content="web developer, full stack developer, Laravel developer, Vue.js developer, PHP developer, frontend developer, backend developer, portfolio, Nigeria, Lagos"
-        />
-        <link rel="canonical" href="https://habeeb-abdulsalam.vercel.app/" />
-
-        {/* Open Graph / Facebook */}
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Habeeb Abdulsalam" />
-        <meta
-          property="og:url"
-          content="https://habeeb-abdulsalam.vercel.app/"
-        />
-        <meta
-          property="og:title"
-          content="Habeeb Abdulsalam | Full Stack Developer"
-        />
-        <meta
-          property="og:description"
-          content="Full Stack Developer focused on building scalable, technical web applications with Laravel, Next.js, and React. Architecting clean systems and modern digital experiences."
-        />
-        <meta
-          property="og:image"
-          content="https://habeeb-abdulsalam.vercel.app/assets/profile-img.jpeg"
-        />
-
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:url"
-          content="https://habeeb-abdulsalam.vercel.app/"
-        />
-        <meta
-          name="twitter:title"
-          content="Habeeb Abdulsalam | Full Stack Developer"
-        />
-        <meta
-          name="twitter:description"
-          content="Full Stack Developer focused on building scalable, technical web applications with Laravel, Next.js, and React. Architecting clean systems and modern digital experiences."
-        />
-        <meta
-          name="twitter:image"
-          content="https://habeeb-abdulsalam.vercel.app/assets/profile-img.jpeg"
-        />
-
-        {/* Structured Data Graph */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@graph": [
-              {
-                "@type": "Person",
-                "@id": "https://habeeb-abdulsalam.vercel.app/#person",
-                name: "Habeeb Abdulsalam",
-                jobTitle: "Full Stack Web Developer",
-                description:
-                  "Full Stack Developer focused on building scalable web applications with Laravel, Next.js, and React.",
-                url: "https://habeeb-abdulsalam.vercel.app/",
-                image:
-                  "https://habeeb-abdulsalam.vercel.app/assets/profile-img.jpeg",
-                sameAs: [
-                  "https://github.com/SgtSlaughter1",
-                  "https://www.linkedin.com/in/abdulsalam-habeeb-9909592a2/",
-                  "https://wa.me/2349076630104",
-                ],
-                address: {
-                  "@type": "PostalAddress",
-                  addressLocality: "Ijebu Ode",
-                  addressCountry: "NG",
-                },
-                knowsAbout: [
-                  "Laravel",
-                  "Vue.js",
-                  "PHP",
-                  "JavaScript",
-                  "HTML5",
-                  "CSS3",
-                  "MySQL",
-                  "Postgres",
-                  "Prisma",
-                  "Redis",
-                  "Git",
-                  "Docker",
-                  "Bootstrap",
-                  "Nuxt.js",
-                  "TypeScript",
-                  "Tailwind CSS",
-                  "Next.js",
-                  "React.js",
-                  "Inertia.js",
-                  "Redux",
-                  "Zustand",
-                  "Three.js",
-                  "GSAP",
-                  "Node.js",
-                  "RESTful APIs",
-                ],
-              },
-              {
-                "@type": "WebSite",
-                "@id": "https://habeeb-abdulsalam.vercel.app/#website",
-                url: "https://habeeb-abdulsalam.vercel.app/",
-                name: "Habeeb Abdulsalam",
-                alternateName: [
-                  "Habeeb Abdulsalam Portfolio",
-                  "Habeeb Abdulsalam - Full Stack Developer"
-                ],
-                description: "Full Stack Developer Portfolio",
-                publisher: {
-                  "@id": "https://habeeb-abdulsalam.vercel.app/#person",
-                },
-              },
-              {
-                "@type": "ProfilePage",
-                "@id": "https://habeeb-abdulsalam.vercel.app/#profile",
-                url: "https://habeeb-abdulsalam.vercel.app/",
-                mainEntity: {
-                  "@id": "https://habeeb-abdulsalam.vercel.app/#person",
-                },
-              },
-            ],
-          })}
-        </script>
-      </Helmet>
-      <Navbar />
-      <main>
-        {currentProjectSlug ? (
-          <ProjectDetailsPage
-            project={currentProject}
-            onBack={handleBackToHome}
-            nextProjectSlug={nextProjectSlug}
-            onNavigateToProject={handleNavigateToProject}
-          />
-        ) : (
-          <>
-            <Home />
-            <Portfolio />
-            <Skills />
-            <Experience />
-            <Certificates />
-            <About />
-            <Contact />
-          </>
-        )}
-      </main>
-      <ScrollToTop />
-      <CustomCursor />
-    </div>
+    <>
+      <a href="#main" className="skip-link">
+        Skip to content
+      </a>
+      <SiteHeader />
+      {isHome && (
+        <>
+          <Seo title={HOME_TITLE} description={HOME_DESCRIPTION} path="/" jsonLd={[personLd]} />
+          <HomePage />
+        </>
+      )}
+      {project && (
+        <>
+          <ProjectSeo project={project} />
+          <ProjectPage key={project.slug} project={project} />
+        </>
+      )}
+      {!isHome && !project && <NotFound />}
+      <ContactFooter />
+    </>
   );
 }
 
-export default App;
+function ProjectSeo({ project }) {
+  const path = `/project/${project.slug}`;
+  const description = project.page.lede;
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      name: project.title,
+      headline: project.page.headline ?? project.title,
+      description,
+      url: `${SITE_URL}${path}`,
+      ...(project.image && { image: `${SITE_URL}${project.image}` }),
+      author: { "@type": "Person", name: profile.name, url: `${SITE_URL}/` },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+        { "@type": "ListItem", position: 2, name: project.title, item: `${SITE_URL}${path}` },
+      ],
+    },
+  ];
+
+  return (
+    <Seo
+      title={`${project.title} — Case study | ${profile.name}`}
+      description={description}
+      path={path}
+      image={project.image}
+      jsonLd={jsonLd}
+    />
+  );
+}
+
+function NotFound() {
+  return (
+    <main id="main" className="wrap not-found">
+      <Seo title={`Page not found | ${profile.name}`} description={HOME_DESCRIPTION} path="/" />
+      <h1>That page isn’t here</h1>
+      <p>
+        It may have moved. <Link to="/#work">See all the work</Link> or{" "}
+        <Link to={`/project/${projects[0].slug}`}>start with the first case study</Link>.
+      </p>
+    </main>
+  );
+}

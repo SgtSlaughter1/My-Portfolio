@@ -1,4 +1,9 @@
 {
+  "redirects": [
+    { "source": "/project/ogsera", "destination": "/project/edutams-essential-v2", "permanent": true },
+    { "source": "/project/portfolio-website", "destination": "/", "permanent": true },
+    { "source": "/project/conference-ticket-generator", "destination": "/", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/sitemap.xml",

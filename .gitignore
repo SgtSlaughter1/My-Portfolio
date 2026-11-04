@@ -24,3 +24,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Claude Code local settings and session files
+.claude/
+public/assets/.claude/

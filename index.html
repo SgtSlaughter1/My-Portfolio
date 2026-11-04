@@ -3,104 +3,46 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="google-site-verification" content="c3e5371e97d2aae4" />
 
-  <!-- Primary Meta Tags -->
-  <title>Habeeb Abdulsalam | Full Stack Developer</title>
-  <meta name="title" content="Habeeb Abdulsalam | Full Stack Developer" />
+  <!-- Defaults; each pre-rendered route replaces these with its own -->
+  <title>Habeeb Abdulsalam | Fullstack Developer & AI Engineer</title>
+  <meta name="title" content="Habeeb Abdulsalam | Fullstack Developer & AI Engineer" />
   <meta name="description"
-    content="Full Stack Developer focused on building scalable, technical web applications with Laravel, Next.js, and React. Architecting clean systems and modern digital experiences." />
-  <meta name="keywords"
-    content="web developer, full stack developer, Laravel developer, Vue.js developer, PHP developer, frontend developer, backend developer, portfolio, Nigeria, Lagos" />
+    content="Fullstack developer building dependable web platforms with Laravel, Vue, React and Next.js, and AI agents with RAG and tool calling. Case studies from education, health, commerce and charity." />
   <meta name="author" content="Habeeb Abdulsalam" />
   <meta name="robots" content="index, follow" />
-  <meta name="language" content="English" />
-  <meta name="revisit-after" content="7 days" />
-  <meta name="application-name" content="Habeeb Abdulsalam" />
-
-  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://habeeb-abdulsalam.vercel.app/" />
-  <meta property="og:title" content="Habeeb Abdulsalam | Full Stack Developer" />
+  <meta property="og:title" content="Habeeb Abdulsalam | Fullstack Developer & AI Engineer" />
   <meta property="og:description"
-    content="Full Stack Developer focused on building scalable, technical web applications with Laravel, Next.js, and React. Architecting clean systems and modern digital experiences." />
-  <meta property="og:image" content="https://habeeb-abdulsalam.vercel.app/assets/profile-img.jpeg" />
+    content="Fullstack developer building dependable web platforms and AI agents. Case studies from education, health, commerce and charity." />
+  <meta property="og:image" content="https://habeeb-abdulsalam.vercel.app/assets/projects/profile.webp" />
   <meta property="og:site_name" content="Habeeb Abdulsalam" />
   <meta property="og:locale" content="en_US" />
-
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://habeeb-abdulsalam.vercel.app/" />
-  <meta property="twitter:title" content="Habeeb Abdulsalam | Full Stack Developer" />
-  <meta property="twitter:description"
-    content="Full Stack Developer focused on building scalable, technical web applications with Laravel, Next.js, and React. Architecting clean systems and modern digital experiences." />
-  <meta property="twitter:image" content="https://habeeb-abdulsalam.vercel.app/assets/profile-img.jpeg" />
-
-  <!-- Additional SEO Meta Tags -->
-  <meta name="theme-color" content="#38BDF8" />
-  <meta name="msapplication-TileColor" content="#0B1020" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
-  <!-- Canonical URL -->
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="canonical" href="https://habeeb-abdulsalam.vercel.app/" />
 
-  <!-- Favicon -->
+  <meta name="theme-color" content="#f7f7f5" />
+  <script>
+    // Apply the theme before first paint: stored choice first, then the system setting.
+    (function () {
+      var stored = null;
+      try { stored = localStorage.getItem("theme"); } catch (e) {}
+      var dark = stored ? stored === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.dataset.theme = dark ? "dark" : "light";
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("motion");
+      document.querySelector('meta[name="theme-color"]').content = dark ? "#131518" : "#f7f7f5";
+    })();
+  </script>
   <link rel="icon" type="image/jpeg" href="/assets/profile-img.jpeg" />
   <link rel="apple-touch-icon" href="/assets/profile-img.jpeg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap"
     rel="stylesheet" />
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Habeeb Abdulsalam",
-        "jobTitle": "Full Stack Web Developer",
-        "description": "Full Stack Developer focused on building scalable web applications with Laravel, Next.js, and React.",
-        "url": "https://habeeb-abdulsalam.vercel.app/",
-        "image": "https://habeeb-abdulsalam.vercel.app/assets/profile-img.jpeg",
-        "sameAs": [
-          "https://github.com/SgtSlaughter1",
-          "https://www.linkedin.com/in/abdulsalam-habeeb-9909592a2/",
-          "https://wa.me/2349076630104"
-        ],
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Ijebu Ode",
-          "addressCountry": "Nigeria"
-        },
-        "knowsAbout": [
-          "Laravel",
-          "Vue.js",
-          "PHP",
-          "JavaScript",
-          "HTML5",
-          "CSS3",
-          "MySQL",
-          "Git",
-          "Bootstrap",
-          "Nuxt.js",
-          "TypeScript",
-          "Tailwind CSS"
-        ],
-        "worksFor": {
-          "@type": "Organization",
-          "name": "Edutams"
-        },
-        "alumniOf": {
-          "@type": "Organization",
-          "name": "Olabisi Onabanjo University"
-        }
-      }
-    </script>
 </head>
 
 <body>

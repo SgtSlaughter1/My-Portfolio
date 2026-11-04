@@ -1,13 +1,16 @@
 [
   { "path": "/" },
-  { "path": "/project/amiable-agro-allied" },
-  { "path": "/project/hama-vet" },
-  { "path": "/project/across-ummah-cic" },
-  { "path": "/project/remo-stars-fc-fan-portal" },
-  { "path": "/project/nurture-prime-foundation" },
   { "path": "/project/edutams-essential-v2" },
-  { "path": "/project/ogsera" },
+  { "path": "/project/acedrill" },
+  { "path": "/project/hama-vet" },
+  { "path": "/project/remo-stars-fc-fan-portal" },
+  { "path": "/project/ngo-assistant" },
+  { "path": "/project/pamsy-assist" },
+  { "path": "/project/linkedin-agent" },
+  { "path": "/project/amiable-agro-allied" },
+  { "path": "/project/mercy-and-blessing" },
+  { "path": "/project/across-ummah-cic" },
+  { "path": "/project/nurture-prime-foundation" },
   { "path": "/project/the-nebula" },
-  { "path": "/project/portfolio-website" },
-  { "path": "/project/conference-ticket-generator" }
+  { "path": "/project/mkce" }
 ]
