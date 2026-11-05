@@ -106,6 +106,12 @@ export const projects = [
         { tag: "03 · Learning science", title: "Questions that match the student", text: "Quizzes adapt with Elo ratings, so difficulty follows the learner. Reviews use SM-2 spaced repetition, capped at a year so intervals never overflow MySQL’s 2038 timestamp limit." },
         { tag: "04 · AI that degrades gracefully", title: "A tutor with three fallbacks", text: "The tutor tries Groq first, then Gemini, then a built-in rule-based tutor that works offline. Student input is sanitised before it reaches any model, and AI-reported XP is capped per day." },
       ],
+      challenges: [
+        { problem: "Every explanation costs money", problemText: "Thousands of learners answer the same questions. Asking the AI each time would mean paying for the same explanation again and again.", fix: "Write it once, reuse it for everyone", fixText: "Each explanation is generated once for a question and the answer chosen, then saved to the database and cached for 30 days. Every learner after that gets it instantly, at no cost. If two learners ask at the same moment, a lock makes sure only one AI call goes out." },
+        { problem: "Free-tier rate limits", problemText: "AI providers only allow a handful of requests a minute, so a busy evening of revision would hit the limit fast.", fix: "Step aside instead of hammering", fixText: "When a model says “too many requests”, it’s put on a cooldown for as long as the provider asks, and the next request goes straight to the next model: Groq first, then Gemini. Each learner is also limited to 20 AI requests a minute, so one person can’t use up the quota for everyone." },
+        { problem: "Long chats get expensive", problemText: "Sending a whole conversation with every message multiplies the tokens you pay for.", fix: "Save the chat, send only what matters", fixText: "Conversations are saved so learners can come back to them, but only the last six turns go to the model. Token usage is recorded daily for each feature, so the cost is always visible." },
+        { problem: "No internet, no AI", problemText: "The students who need help most are often the ones without data.", fix: "Answer from the question bank", fixText: "Offline, a built-in tutor answers from the question bank’s own worked explanations. Those offline answers are only kept for ten minutes, so the AI gets another chance once the connection is back." },
+      ],
       builtWith:
         "Laravel API with MySQL · React 19 + TypeScript PWA with Workbox and Dexie · KaTeX for maths · Groq and Gemini · past questions imported from the ALOC API · 288 automated tests.",
       closing: {
@@ -268,7 +274,12 @@ export const projects = [
       decisions: [
         { tag: "Security boundary", title: "The AI never knows who you are", text: "The backend takes the user from the login session, not from the model. Every tool argument is treated as untrusted and validated, and repositories check ownership before any read or write." },
         { tag: "Bounded loop", title: "Many tools, never forever", text: "Gemini can call several tools in one turn and gets all results back together. The loop stops after 8 rounds." },
-        { tag: "Failover", title: "If the model goes down", text: "On errors, rate limits or timeouts it tries the next model, inside one shared 25-second budget. If none answer, a built-in step-by-step flow finishes the job, and won’t create the same donation twice if a tool already ran." },
+      ],
+      challenges: [
+        { problem: "Free-tier rate limits", problemText: "Gemini’s free tier allows only a few requests a minute per model, and a single donation can take several model calls.", fix: "Wait when it’s short, switch when it isn’t", fixText: "On a “too many requests” error, the backend reads how long the provider asks it to wait. If that’s a few seconds, it waits and retries once; if not, it moves straight to the next model. Everything runs inside one 25-second budget, so the user is never left hanging." },
+        { problem: "Every model is down", problemText: "Out of quota, overloaded or timed out: a chat that just stops halfway through a donation loses the donor.", fix: "A guided flow takes over", fixText: "A built-in step-by-step flow finishes the conversation without the AI. Its progress is remembered between messages, and if a tool already created the donation, it says so instead of creating a second one." },
+        { problem: "Context costs tokens", problemText: "The model needs the conversation to make sense of “yes, those ones”, but sending all of it every time gets expensive.", fix: "Save the conversation, send a window", fixText: "Every conversation is saved in the database, and only the latest 50 messages go to the model. The window is trimmed so it never starts halfway through a tool call." },
+        { problem: "Prompts stuffed with data", problemText: "Loading a user’s profile and history into every prompt is slow, costly and risky.", fix: "Fetch real data only when it’s needed", fixText: "The prompt holds no user data at all. Gemini calls a tool, such as list_my_donations, only when the conversation needs that fact, and gets back just that user’s records." },
       ],
       builtWith:
         "Laravel (PHP 8.3) and MySQL with thin controllers, services and repositories · React + TypeScript + Vite front end · Gemini function calling written directly against the API, no framework · six docs covering AI, API, architecture, auth, database and development.",
@@ -319,7 +330,12 @@ export const projects = [
       decisions: [
         { tag: "Guardrails", title: "Helpful, not a doctor", text: "Medical disclaimer with no diagnosis or dosages, privacy rules aligned with NDPR, GDPR and HIPAA, and hand-off to a human for disputed transactions. Answers adapt to each of the four roles." },
         { tag: "Fits a small server", title: "512 MB is enough", text: "The vector store loads only on the first knowledge question, so the API starts fast on a small host." },
-        { tag: "Tested without the API", title: "Fake embeddings, real checks", text: "RAG tests run against a fake embeddings class, so retrieval is verified without paying for model calls. Requests are rate-limited and validated with Pydantic." },
+        { tag: "Tested without the API", title: "Fake embeddings, real checks", text: "RAG tests run against a fake embeddings class, so retrieval is verified without paying for model calls. Every request is validated with Pydantic." },
+      ],
+      challenges: [
+        { problem: "Paying to re-read the docs", problemText: "Turning the help docs into embeddings costs an API call for every chunk, every time the server starts.", fix: "Embed once, keep it on disk", fixText: "The knowledge base is embedded once and saved to a local vector store. Restarts reuse it, so documents are only embedded again when they change." },
+        { problem: "Abuse and runaway bills", problemText: "A public chat endpoint can be spammed, and every request costs model tokens.", fix: "Limits at the door", fixText: "Chat is limited to 10 requests a minute per visitor. Messages are capped at 4,000 characters and history at 50 turns, so no single request can blow up the cost." },
+        { problem: "Not every question needs live data", problemText: "Hitting the platform’s backend for every message would be slow and wasteful.", fix: "Look up real data only when asked", fixText: "The agent answers “how do I…” questions from the docs, and calls one of its six live tools only for “what’s happening with mine?” questions, like an appointment or a wallet balance." },
       ],
       builtWith:
         "FastAPI · LangChain agent (LangGraph under the hood) · Gemini chat and embeddings · Chroma · typed tools calling the Laravel backend over httpx · slowapi rate limiting.",
@@ -372,6 +388,11 @@ export const projects = [
         { tag: "Voice, not template", title: "Learned from my own posts", text: "It reads my LinkedIn data export safely, removes duplicate posts, and has Gemini describe my style. That profile goes into every prompt." },
         { tag: "Approval gate", title: "Nothing ships without a yes", text: "A scheduler walks a dated queue. It posts only approved items, marks them posted so they never go twice, uses different times on weekdays and weekends, and gives up after three failures." },
         { tag: "Clean output", title: "Reads like a person wrote it", text: "Filters strip the model’s “Here’s your post…” chatter and Markdown, because LinkedIn shows plain text only." },
+      ],
+      challenges: [
+        { problem: "Learning a voice is expensive", problemText: "Analysing hundreds of past posts on every run would burn tokens and time.", fix: "Analyse once, save the profile", fixText: "Gemini studies my post history once and writes a style profile, which is saved to a file and reused in every prompt. My post history is also fetched once and kept locally, with duplicates removed." },
+        { problem: "Regenerating forever", problemText: "It’s tempting to keep hitting “try again” until a draft feels right, and every retry costs money.", fix: "Capped attempts, cheaper model", fixText: "Each post and image gets at most five attempts, and I can type feedback to steer the next one instead of starting over. Text uses Gemini’s lightweight Flash-Lite model." },
+        { problem: "Publishing shouldn’t need the AI", problemText: "If posting regenerated content, what goes out wouldn’t be what I approved.", fix: "Save the approved draft, post it as is", fixText: "Approved posts are saved to a dated queue. The scheduler publishes that saved text exactly as written, with no model call at posting time." },
       ],
       builtWith:
         "Python · Gemini via the google-genai SDK · Cloudflare Workers AI (Flux) for images · python-pptx for decks · HTML/CSS designs rendered to PNG with headless Chrome · my own LinkedIn OAuth and posting client with token refresh.",
