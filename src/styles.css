@@ -1334,6 +1334,79 @@ figure {
   margin-top: 10px;
 }
 
+/* Problems and solutions: one row per constraint, the fix beside it. */
+.challenges {
+  padding-bottom: 72px;
+}
+
+.challenges h2 {
+  max-width: 672px;
+  margin: 0 auto 24px;
+  font-size: 28px;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+.challenges__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.challenge {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+  gap: 16px 48px;
+  padding: 32px 0;
+  border-top: 1px solid var(--line);
+}
+
+.challenge:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.challenge__label {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--warm-ink);
+}
+
+.challenge__side--fix .challenge__label {
+  color: var(--accent);
+}
+
+.challenge h3 {
+  margin-top: 8px;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.challenge p:not(.challenge__label) {
+  margin-top: 8px;
+  font-size: 16px;
+  color: var(--ink-2);
+}
+
+.challenge__side:not(.challenge__side--fix) p:not(.challenge__label) {
+  color: var(--muted);
+}
+
+@media (max-width: 720px) {
+  .challenge {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 28px 0;
+  }
+
+  .challenge__side--fix {
+    padding-left: 16px;
+    border-left: 1px solid var(--accent-line);
+  }
+}
+
 .steps-panel {
   padding: 48px 40px;
   background: var(--night);

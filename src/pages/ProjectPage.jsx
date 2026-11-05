@@ -140,6 +140,8 @@ function FullStudy({ project }) {
         </section>
       )}
 
+      {page.challenges && <Challenges items={page.challenges} />}
+
       {page.steps && (
         <section className="wrap decisions" aria-label={page.steps.tag}>
           <div className="steps-panel">
@@ -179,6 +181,31 @@ function FullStudy({ project }) {
       </article>
       <div className="cs-end" />
     </>
+  );
+}
+
+// Real constraints (rate limits, cost, outages) paired with what the build does about them.
+function Challenges({ items }) {
+  return (
+    <section className="wrap challenges" aria-labelledby="challenges-h">
+      <h2 id="challenges-h">Problems I hit, and how I solved them</h2>
+      <ol className="challenges__list">
+        {items.map((c) => (
+          <li key={c.problem} className="challenge">
+            <div className="challenge__side">
+              <p className="challenge__label">Problem</p>
+              <h3>{c.problem}</h3>
+              <p>{c.problemText}</p>
+            </div>
+            <div className="challenge__side challenge__side--fix">
+              <p className="challenge__label">Solution</p>
+              <h3>{c.fix}</h3>
+              <p>{c.fixText}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
   );
 }
 
