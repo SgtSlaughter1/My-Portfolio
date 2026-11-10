@@ -182,13 +182,13 @@ export const projects = [
     title: "Remo Stars FC",
     group: "featured",
     depth: "full",
-    role: "Fullstack Developer",
+    role: "Frontend Developer",
     year: "2026",
     live: { url: "https://remostars.vercel.app", label: "remostars.vercel.app" },
     image: "/assets/projects/remo.webp",
     imageAlt: "Remo Stars FC fan portal home",
     card: {
-      eyebrow: "Fullstack · Concept · 2026",
+      eyebrow: "Frontend · Concept · 2026",
       summary:
         "A fan portal concept for a Nigerian Premier League club, with a 3D stadium scene, a lineup builder and a merch store. Live fixtures and tables are cached and fall back to seed data, so the site never shows an empty match day.",
       stack: "Next.js 16 · Three.js · API-Football · Zustand",
@@ -199,7 +199,7 @@ export const projects = [
       lede:
         "One home for Remo Stars supporters: fixtures and results, the league table, men’s and ladies’ squads, news, club history, a lineup builder and a merch store, opened by a 3D stadium scene.",
       facts: [
-        { label: "Role", value: "Fullstack Developer" },
+        { label: "Role", value: "Frontend Developer" },
         { label: "Type", value: "Concept build" },
         { label: "Timeline", value: "May 2026, about two weeks" },
       ],
