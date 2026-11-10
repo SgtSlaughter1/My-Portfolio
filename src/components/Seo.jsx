@@ -9,6 +9,7 @@ export default function Seo({ title, description, path = "/", image, jsonLd = []
     <Helmet>
       <title>{title}</title>
       <meta name="title" content={title} />
+      <meta name="application-name" content={profile.name} />
       <meta name="description" content={description} />
       <link rel="canonical" href={url} />
       <meta property="og:type" content={path === "/" ? "website" : "article"} />

@@ -1,13 +1,13 @@
 export const SITE_URL = "https://habeeb-abdulsalam.vercel.app";
 
 export const profile = {
-  name: "Habeeb Abdulsalam",
+  name: "Abdulsalam Habeeb",
   role: "Fullstack Developer",
   location: "Ijebu Ode, Nigeria",
   email: "habeebabdulsalam86@gmail.com",
   whatsapp: "https://wa.me/2349076630104",
   github: "https://github.com/SgtSlaughter1",
-  linkedin: "https://www.linkedin.com/in/abdulsalam-habeeb-9909592a2/",
+  linkedin: "https://www.linkedin.com/in/habeeb-abdulsalam/",
   photo: "/assets/projects/profile.webp",
 };
 

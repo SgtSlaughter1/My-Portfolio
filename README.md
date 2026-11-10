@@ -1,6 +1,6 @@
-# Habeeb Abdulsalam · Portfolio
+# Abdulsalam Habeeb · Portfolio
 
-The personal site of Habeeb Abdulsalam, a fullstack developer building dependable web platforms and AI agents.
+The personal site of Abdulsalam Habeeb, a fullstack developer building dependable web platforms and AI agents.
 
 **Live:** [habeeb-abdulsalam.vercel.app](https://habeeb-abdulsalam.vercel.app)
 
@@ -104,7 +104,7 @@ All copy lives in `src/data/`, so most updates don't touch any components.
 ## Contact
 
 - Email: [habeebabdulsalam86@gmail.com](mailto:habeebabdulsalam86@gmail.com)
-- LinkedIn: [Abdulsalam Habeeb](https://www.linkedin.com/in/abdulsalam-habeeb-9909592a2/)
+- LinkedIn: [Abdulsalam Habeeb](https://www.linkedin.com/in/habeeb-abdulsalam/)
 - GitHub: [SgtSlaughter1](https://github.com/SgtSlaughter1)
 
-The content, screenshots and certificates in this repository belong to Habeeb Abdulsalam and aren't licensed for reuse.
+The content, screenshots and certificates in this repository belong to Abdulsalam Habeeb and aren't licensed for reuse.

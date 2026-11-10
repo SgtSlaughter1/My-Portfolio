@@ -13,10 +13,19 @@ const HOME_TITLE = `${profile.name} | Fullstack Developer & AI Engineer`;
 const HOME_DESCRIPTION =
   "Fullstack developer building dependable web platforms with Laravel, Vue, React and Next.js, and AI agents with RAG and tool calling. Case studies from education, health, commerce and charity.";
 
+const websiteLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: profile.name,
+  alternateName: ["Abdulsalam Oladipupo Habeeb", "Habeeb Abdulsalam"],
+  url: `${SITE_URL}/`,
+};
+
 const personLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: profile.name,
+  alternateName: ["Abdulsalam Oladipupo Habeeb", "Habeeb Abdulsalam"],
   jobTitle: profile.role,
   url: `${SITE_URL}/`,
   image: `${SITE_URL}${profile.photo}`,
@@ -68,7 +77,7 @@ export default function App({ initialPath = "/" }) {
       <SiteHeader />
       {isHome && (
         <>
-          <Seo title={HOME_TITLE} description={HOME_DESCRIPTION} path="/" jsonLd={[personLd]} />
+          <Seo title={HOME_TITLE} description={HOME_DESCRIPTION} path="/" jsonLd={[websiteLd, personLd]} />
           <HomePage />
         </>
       )}
