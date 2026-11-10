@@ -19,7 +19,7 @@ function main() {
   const xmlUrls = routes.map((r) => {
     // Format route cleanly: ensuring we have a slash between baseUrl and route path
     const routePath = r.path.startsWith('/') ? r.path : `/${r.path}`;
-    const cleanUrl = routePath === '/' ? baseUrl : `${baseUrl}${routePath}`;
+    const cleanUrl = routePath === '/' ? `${baseUrl}/` : `${baseUrl}${routePath}`;
     return `  <url>
     <loc>${cleanUrl}</loc>
     <lastmod>${today}</lastmod>

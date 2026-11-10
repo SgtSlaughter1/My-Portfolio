@@ -131,7 +131,7 @@ function ProjectSeo({ project }) {
 function NotFound() {
   return (
     <main id="main" className="wrap not-found">
-      <Seo title={`Page not found | ${profile.name}`} description={HOME_DESCRIPTION} path="/" />
+      <Seo title={`Page not found | ${profile.name}`} description={HOME_DESCRIPTION} noindex />
       <h1>That page isn’t here</h1>
       <p>
         It may have moved. <Link to="/#work">See all the work</Link> or{" "}

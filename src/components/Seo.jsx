@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { SITE_URL, profile } from "../data/profile";
 
-export default function Seo({ title, description, path = "/", image, jsonLd = [] }) {
+export default function Seo({ title, description, path = "/", image, noindex = false, jsonLd = [] }) {
   const url = path === "/" ? `${SITE_URL}/` : `${SITE_URL}${path}`;
   const img = `${SITE_URL}${image ?? profile.photo}`;
 
@@ -11,7 +11,7 @@ export default function Seo({ title, description, path = "/", image, jsonLd = []
       <meta name="title" content={title} />
       <meta name="application-name" content={profile.name} />
       <meta name="description" content={description} />
-      <link rel="canonical" href={url} />
+      {noindex ? <meta name="robots" content="noindex, nofollow" /> : <link rel="canonical" href={url} />}
       <meta property="og:type" content={path === "/" ? "website" : "article"} />
       <meta property="og:url" content={url} />
       <meta property="og:title" content={title} />
