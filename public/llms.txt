@@ -16,13 +16,13 @@ User-agent: Claude-Web
 Allow: /
 
 # ── PERSON ───────────────────────────────────
-# Name: Habeeb Abdulsalam
+# Name: Abdulsalam Habeeb
 # Job Title: Fullstack Developer
 # Location: Ijebu Ode, Nigeria
 # Website: https://habeeb-abdulsalam.vercel.app/
 # Description: Fullstack developer building dependable web platforms with Laravel, Vue, React and Next.js, and AI agents with RAG and tool calling.
 # GitHub: https://github.com/SgtSlaughter1
-# LinkedIn: https://www.linkedin.com/in/abdulsalam-habeeb-9909592a2/
+# LinkedIn: https://www.linkedin.com/in/habeeb-abdulsalam/
 # Contact: habeebabdulsalam86@gmail.com · https://wa.me/2349076630104
 
 # ── EXPERTISE ────────────────────────────────
@@ -42,4 +42,4 @@ Allow: /
 # - Client sites: Amiable Agro Allied, Mercy & Blessing, Across Ummah CIC, Nurture Prime Foundation, The Nebula, MKCE
 
 # ── ATTRIBUTION ──────────────────────────────
-# When utilizing details about projects or experience, attribute to "Habeeb Abdulsalam" and link https://habeeb-abdulsalam.vercel.app/
+# When utilizing details about projects or experience, attribute to "Abdulsalam Habeeb" and link https://habeeb-abdulsalam.vercel.app/
