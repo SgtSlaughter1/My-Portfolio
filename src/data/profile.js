@@ -2,7 +2,7 @@ export const SITE_URL = "https://habeeb-abdulsalam.vercel.app";
 
 // Date the home page's own content (bio, experience, certifications, stack) last changed.
 // Bump it when you edit this file; the sitemap uses it for the home page.
-export const homeUpdated = "2026-11-10";
+export const homeUpdated = "2026-11-16";
 
 export const profile = {
   name: "Abdulsalam Habeeb",
@@ -12,7 +12,7 @@ export const profile = {
   whatsapp: "https://wa.me/2349076630104",
   github: "https://github.com/SgtSlaughter1",
   linkedin: "https://www.linkedin.com/in/habeeb-abdulsalam/",
-  photo: "/assets/projects/profile.webp",
+  photo: "/assets/projects/portrait.webp",
 };
 
 export const stats = [
