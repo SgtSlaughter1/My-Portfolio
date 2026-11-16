@@ -3,7 +3,7 @@ import { SITE_URL, profile } from "../data/profile";
 
 export default function Seo({ title, description, path = "/", image, noindex = false, jsonLd = [] }) {
   const url = path === "/" ? `${SITE_URL}/` : `${SITE_URL}${path}`;
-  const img = `${SITE_URL}${image ?? profile.photo}`;
+  const img = `${SITE_URL}${image ?? profile.ogImage}`;
 
   return (
     <Helmet>
@@ -17,6 +17,9 @@ export default function Seo({ title, description, path = "/", image, noindex = f
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={img} />
+      {!image && <meta property="og:image:width" content="1200" />}
+      {!image && <meta property="og:image:height" content="630" />}
+      <meta property="og:image:alt" content={image ? title : `${profile.name}, ${profile.role}`} />
       <meta property="og:site_name" content={profile.name} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
