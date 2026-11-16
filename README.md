@@ -116,5 +116,6 @@ The home page's date also moves automatically whenever any project's date change
 - Email: [habeebabdulsalam86@gmail.com](mailto:habeebabdulsalam86@gmail.com)
 - LinkedIn: [Abdulsalam Habeeb](https://www.linkedin.com/in/habeeb-abdulsalam/)
 - GitHub: [SgtSlaughter1](https://github.com/SgtSlaughter1)
+- X: [@habeebbuilds](https://x.com/habeebbuilds)
 
 The content, screenshots and certificates in this repository belong to Abdulsalam Habeeb and aren't licensed for reuse.

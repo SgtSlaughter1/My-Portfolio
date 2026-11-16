@@ -23,6 +23,7 @@ Allow: /
 # Description: Fullstack developer building dependable web platforms with Laravel, Vue, React and Next.js, and AI agents with RAG and tool calling.
 # GitHub: https://github.com/SgtSlaughter1
 # LinkedIn: https://www.linkedin.com/in/habeeb-abdulsalam/
+# X: https://x.com/habeebbuilds
 # Contact: habeebabdulsalam86@gmail.com · https://wa.me/2349076630104
 
 # ── EXPERTISE ────────────────────────────────

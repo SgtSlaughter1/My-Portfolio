@@ -12,6 +12,7 @@ export const profile = {
   whatsapp: "https://wa.me/2349076630104",
   github: "https://github.com/SgtSlaughter1",
   linkedin: "https://www.linkedin.com/in/habeeb-abdulsalam/",
+  x: "https://x.com/habeebbuilds",
   photo: "/assets/projects/portrait.webp",
   // 1200x630 link-preview image for LinkedIn, WhatsApp and X. Pages without their own image use it.
   ogImage: "/og-image.jpg",

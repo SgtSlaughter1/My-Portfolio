@@ -30,7 +30,7 @@ const personLd = {
   url: `${SITE_URL}/`,
   image: `${SITE_URL}${profile.photo}`,
   email: `mailto:${profile.email}`,
-  sameAs: [profile.github, profile.linkedin],
+  sameAs: [profile.github, profile.linkedin, profile.x],
   address: { "@type": "PostalAddress", addressLocality: "Ijebu Ode", addressCountry: "Nigeria" },
   worksFor: { "@type": "Organization", name: "Edutams" },
   alumniOf: { "@type": "CollegeOrUniversity", name: "Olabisi Onabanjo University" },

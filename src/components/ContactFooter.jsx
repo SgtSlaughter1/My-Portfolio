@@ -20,6 +20,9 @@ export default function ContactFooter() {
           <a href={profile.github} target="_blank" rel="noopener noreferrer">
             GitHub
           </a>
+          <a href={profile.x} target="_blank" rel="noopener noreferrer">
+            X
+          </a>
         </div>
         <footer className="footer">
           <span>© {new Date().getFullYear()} {profile.name}</span>
