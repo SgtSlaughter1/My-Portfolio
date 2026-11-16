@@ -1,5 +1,9 @@
 export const SITE_URL = "https://habeeb-abdulsalam.vercel.app";
 
+// Date the home page's own content (bio, experience, certifications, stack) last changed.
+// Bump it when you edit this file; the sitemap uses it for the home page.
+export const homeUpdated = "2026-11-10";
+
 export const profile = {
   name: "Abdulsalam Habeeb",
   role: "Fullstack Developer",

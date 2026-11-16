@@ -93,11 +93,21 @@ All copy lives in `src/data/`, so most updates don't touch any components.
    - `group` is `featured`, `ai` or `client`, and decides which home section the project appears in.
    - `depth` is `full` for the long case study or `short` for the compact one.
    - `card` holds the text for the home page card, and `page` holds the case-study content. Copy an existing entry of the same depth as a starting point.
+   - `updated` is today's date (`YYYY-MM-DD`). The build fails without it.
 3. Add the route to `src/prerender/staticRoutes.json` so it's pre-rendered and added to the sitemap.
+
+**Keep the sitemap dates honest**
+
+The sitemap tells Google when each page last changed, using the `updated` dates in the data files. Whenever you edit a page's content, set its date to today:
+
+- **A case study:** its `updated` field in `src/data/projects.js`.
+- **The home page's own content** (bio, experience, certifications, stack): `homeUpdated` in `src/data/profile.js`.
+
+The home page's date also moves automatically whenever any project's date changes, since it lists every project.
 
 **Other updates**
 
-- **Experience, certifications, stats and stack:** edit `src/data/profile.js`.
+- **Experience, certifications, stats and stack:** edit `src/data/profile.js`, and bump `homeUpdated`.
 - **New stack logo:** map the name to an icon in `src/data/stackIcons.js`. Items without a logo show as text.
 - **Colours:** change the tokens at the top of `src/styles.css`. The dark theme overrides them under `:root[data-theme="dark"]`.
 
